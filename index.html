@@ -1,0 +1,1170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ff4f9a" />
+
+    <title>Pink Surprise 💗</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pacifico&display=swap");
+      .justify {
+        text-align: justify;
+      }
+      :root {
+        --pink: #ff4f9a;
+        --light-pink: #ffb6d5;
+        --dark: #100914;
+        --card: #1d1020;
+        --text: #fff1f7;
+        --muted: #c9aebd;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--dark);
+        color: var(--text);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      /* BACKGROUND ANIMATION */
+
+      #hearts {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 0;
+      }
+
+      .heart {
+        position: absolute;
+        bottom: -40px;
+        color: var(--pink);
+        opacity: 0;
+        animation: floatHeart linear forwards;
+      }
+
+      @keyframes floatHeart {
+        0% {
+          transform: translateY(0) rotate(0deg) scale(0.7);
+          opacity: 0;
+        }
+        15% {
+          opacity: 0.65;
+        }
+        100% {
+          transform: translateY(-110vh) rotate(360deg) scale(1.3);
+          opacity: 0;
+        }
+      }
+
+      /* GENERAL */
+
+      .hidden {
+        display: none !important;
+      }
+
+      .pink {
+        color: var(--pink);
+      }
+
+      .script {
+        font-family: "Pacifico", cursive;
+        color: var(--pink);
+      }
+
+      .btn {
+        border: none;
+        border-radius: 30px;
+        padding: 13px 23px;
+        color: white;
+        background: linear-gradient(135deg, #ff78b3, #ff3488);
+        font-weight: 600;
+        box-shadow: 0 5px 25px #ff4f9a35;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px #ff4f9a70;
+      }
+
+      /* LOGIN PAGE */
+
+      #loginPage {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 25px;
+        position: relative;
+        z-index: 1;
+        background:
+          radial-gradient(ellipse at 15% 20%, #a3215c30, transparent 40%),
+          radial-gradient(ellipse at 85% 80%, #ff4f9a20, transparent 40%);
+      }
+
+      .login-layout {
+        width: 100%;
+        max-width: 1000px;
+        display: grid;
+        grid-template-columns: 1fr 410px;
+        gap: 55px;
+        align-items: center;
+      }
+
+      .welcome-text {
+        animation: slideIn 0.9s ease both;
+      }
+
+      .welcome-text .eyebrow {
+        display: inline-block;
+        border: 1px solid #ff4f9a55;
+        color: var(--light-pink);
+        border-radius: 30px;
+        padding: 7px 15px;
+        font-size: 12px;
+        letter-spacing: 2px;
+        margin-bottom: 22px;
+      }
+
+      .welcome-text h1 {
+        font-size: clamp(38px, 5vw, 66px);
+        line-height: 1.2;
+        margin-bottom: 22px;
+      }
+
+      .welcome-text h1 .script {
+        display: block;
+        margin-top: 8px;
+      }
+
+      .welcome-text p {
+        color: var(--muted);
+        line-height: 1.9;
+        max-width: 440px;
+        margin-bottom: 28px;
+      }
+
+      .login-card {
+        background: #1d1020dd;
+        border: 1px solid #ff7db755;
+        padding: 34px;
+        border-radius: 25px;
+        box-shadow:
+          0 20px 80px #0008,
+          0 0 40px #ff4f9a0c;
+        backdrop-filter: blur(18px);
+        animation: cardAppear 1s ease both;
+      }
+
+      .login-card .gift {
+        font-size: 38px;
+        margin-bottom: 15px;
+        display: inline-block;
+        animation: giftBounce 2s infinite ease-in-out;
+      }
+
+      .login-card h2 {
+        font-size: 27px;
+        margin-bottom: 7px;
+      }
+
+      .login-card > p {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 25px;
+      }
+
+      .field {
+        margin-bottom: 18px;
+      }
+
+      .field label {
+        display: block;
+        font-size: 12px;
+        margin-bottom: 8px;
+        color: var(--light-pink);
+      }
+
+      .input-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid #70415e;
+        border-radius: 12px;
+        background: #110b15;
+        padding: 0 14px;
+        transition: 0.25s;
+      }
+
+      .input-wrap:focus-within {
+        border-color: var(--pink);
+        box-shadow: 0 0 0 3px #ff4f9a20;
+      }
+
+      .input-wrap span {
+        color: var(--pink);
+      }
+
+      .input-wrap input {
+        width: 100%;
+        padding: 14px 0;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 13px;
+      }
+
+      .input-wrap input::placeholder {
+        color: #8e7486;
+      }
+
+      .show-password {
+        border: none;
+        background: transparent;
+        color: var(--light-pink);
+      }
+
+      #loginForm .btn {
+        width: 100%;
+        margin-top: 7px;
+      }
+
+      #loginMessage {
+        font-size: 12px;
+        text-align: center;
+        margin-top: 15px;
+        min-height: 18px;
+        color: var(--light-pink);
+      }
+
+      .login-note {
+        text-align: center;
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      /* MAIN WEBSITE */
+
+      #surprisePage {
+        position: relative;
+        z-index: 1;
+        animation: fadeIn 0.8s ease;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        padding: 17px 6%;
+        background: #100914ef;
+        border-bottom: 1px solid #ffffff10;
+        backdrop-filter: blur(15px);
+      }
+
+      .logo {
+        font-family: "Pacifico", cursive;
+        font-size: 25px;
+        color: var(--pink);
+        text-decoration: none;
+      }
+
+      nav {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #e7d4df;
+        font-size: 13px;
+        transition: 0.25s;
+      }
+
+      nav a:hover {
+        color: var(--pink);
+      }
+
+      .logout {
+        background: transparent;
+        color: var(--light-pink);
+        border: 1px solid #ff4f9a80;
+        border-radius: 30px;
+        padding: 9px 15px;
+        font-size: 12px;
+      }
+
+      /* HERO */
+
+      .hero {
+        min-height: 440px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 70px 20px;
+        background:
+          radial-gradient(ellipse at center, #a51e5b3d, transparent 65%),
+          linear-gradient(180deg, #ff4f9a08, transparent);
+      }
+
+      .hero-content {
+        max-width: 750px;
+        animation: slideIn 1s ease;
+      }
+
+      .hero .small {
+        color: var(--light-pink);
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        font-size: 11px;
+        margin-bottom: 22px;
+      }
+
+      .hero h1 {
+        font-size: clamp(38px, 7vw, 72px);
+        line-height: 1.25;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.9;
+        margin: 0 auto 25px;
+      }
+
+      /* GALLERY */
+
+      .section {
+        max-width: 1250px;
+        margin: auto;
+        padding: 45px 25px 65px;
+        scroll-margin-top: 80px;
+      }
+
+      .section-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-bottom: 28px;
+      }
+
+      .section-heading h2 {
+        font-size: clamp(25px, 4vw, 34px);
+      }
+
+      .section-heading p {
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 6px;
+      }
+
+      .filters {
+        display: flex;
+        gap: 8px;
+      }
+
+      .filter-btn {
+        background: #1d1020;
+        border: 1px solid #ffffff15;
+        color: var(--muted);
+        border-radius: 25px;
+        padding: 9px 17px;
+        font-size: 12px;
+        transition: 0.25s;
+      }
+
+      .filter-btn.active,
+      .filter-btn:hover {
+        background: var(--pink);
+        color: white;
+        border-color: var(--pink);
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .media-card {
+        background: var(--card);
+        border: 1px solid #ffffff12;
+        border-radius: 16px;
+        overflow: hidden;
+        transition: 0.35s;
+        animation: fadeIn 0.6s ease both;
+      }
+
+      .media-card:hover {
+        transform: translateY(-7px);
+        border-color: #ff4f9a85;
+        box-shadow: 0 15px 35px #ff4f9a12;
+      }
+
+      .media-card.hidden {
+        display: none !important;
+      }
+
+      .media-frame {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        position: relative;
+        background: #291426;
+        overflow: hidden;
+      }
+
+      .media-frame img,
+      .media-frame video {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .media-card:hover .media-frame img {
+        transform: scale(1.06);
+      }
+
+      .media-frame video {
+        background: #100914;
+      }
+
+      .media-label {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 5px 10px;
+        border-radius: 20px;
+        background: #100914bb;
+        color: var(--light-pink);
+        font-size: 10px;
+        pointer-events: none;
+      }
+
+      .media-info {
+        padding: 15px;
+      }
+
+      .media-info h3 {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .media-info p {
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.7;
+      }
+
+      .empty-message {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 35px;
+        color: var(--muted);
+        border: 1px dashed #ff4f9a50;
+        border-radius: 15px;
+      }
+
+      /* MESSAGE */
+
+      .message-box {
+        max-width: 780px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 40px 30px;
+        border-radius: 25px;
+        border: 1px solid #ff4f9a45;
+        background: linear-gradient(145deg, #291226, #160c1a);
+        box-shadow: 0 15px 50px #0003;
+      }
+
+      .message-box .big-heart {
+        font-size: 45px;
+        display: inline-block;
+        animation: heartbeat 1.4s infinite;
+      }
+
+      .message-box h2 {
+        margin: 15px 0;
+        font-size: 30px;
+      }
+
+      .message-box p {
+        color: var(--muted);
+        line-height: 2;
+        font-size: 14px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 25px 15px;
+        border-top: 1px solid #ffffff10;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      /* ANIMATIONS */
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes cardAppear {
+        from {
+          opacity: 0;
+          transform: translateX(25px) scale(0.97);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) scale(1);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes giftBounce {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-5deg);
+        }
+        50% {
+          transform: translateY(-8px) rotate(5deg);
+        }
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        15% {
+          transform: scale(1.2);
+        }
+        30% {
+          transform: scale(1);
+        }
+        45% {
+          transform: scale(1.15);
+        }
+      }
+
+      /* RESPONSIVE */
+
+      @media (max-width: 900px) {
+        .login-layout {
+          grid-template-columns: 1fr;
+          max-width: 500px;
+          gap: 30px;
+        }
+
+        .welcome-text {
+          text-align: center;
+        }
+
+        .welcome-text p {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        header {
+          padding: 15px 4%;
+        }
+
+        nav {
+          gap: 12px;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .login-card {
+          padding: 25px 20px;
+        }
+
+        header {
+          flex-wrap: wrap;
+        }
+
+        .logo {
+          font-size: 21px;
+        }
+
+        nav {
+          order: 3;
+          width: 100%;
+          justify-content: center;
+          padding-top: 8px;
+        }
+
+        nav a {
+          font-size: 11px;
+        }
+
+        .logout {
+          padding: 7px 10px;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section {
+          padding: 35px 18px 45px;
+        }
+
+        .section-heading {
+          align-items: start;
+        }
+
+        .filters {
+          flex-wrap: wrap;
+        }
+
+        .hero {
+          min-height: 350px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="hearts" aria-hidden="true"></div>
+
+    <!-- LOGIN PAGE -->
+    <main id="loginPage">
+      <div class="login-layout">
+        <div class="welcome-text">
+          <span class="eyebrow">✦ A LITTLE SOMETHING FOR YOU ✦</span>
+
+          <h1>
+            Life is better with
+            <span class="script">Surprises ♡</span>
+          </h1>
+
+          <p>
+            Some moments deserve to be kept forever. Sign in to discover a
+            little collection of memories, smiles, and special surprises. 💗
+          </p>
+
+          <span class="script" style="font-size: 23px">
+            Made with love, just for you.
+          </span>
+        </div>
+
+        <div class="login-card">
+          <div class="gift">🎁</div>
+
+          <h2>Welcome, <span class="pink">Love!</span></h2>
+
+          <p>Enter your details to unlock your surprise.</p>
+
+          <form id="loginForm">
+            <div class="field">
+              <label for="username">USERNAME</label>
+
+              <div class="input-wrap">
+                <span>♡</span>
+                <input
+                  type="text"
+                  id="username"
+                  placeholder="Enter username"
+                  autocomplete="username"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="password">PASSWORD</label>
+
+              <div class="input-wrap">
+                <span>♥</span>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Enter password"
+                  autocomplete="current-password"
+                  required
+                />
+
+                <button
+                  class="show-password"
+                  type="button"
+                  id="togglePassword"
+                  aria-label="Show password"
+                >
+                  ◉
+                </button>
+              </div>
+            </div>
+
+            <button class="btn" type="submit">Unlock My Surprise ♡</button>
+
+            <p id="loginMessage" role="status"></p>
+          </form>
+
+          <div class="login-note">A little surprise is waiting for you ✨</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- SURPRISE WEBSITE -->
+    <div id="surprisePage" class="hidden">
+      <header>
+        <a class="logo" href="#home">♡ Surprise</a>
+
+        <nav>
+          <a href="#home">Home</a>
+          <a href="#gallery">Photos</a>
+          <a href="#videos">Videos</a>
+          <a href="#message">A Message</a>
+        </nav>
+
+        <button class="logout" id="logoutBtn">Log Out ↗</button>
+      </header>
+
+      <!-- HERO SECTION -->
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <p class="small">read this first, baby</p>
+
+          <h1>
+            You are my favorite
+            <span class="script">kind of surprise.</span>
+          </h1>
+
+          <p class="justify">
+            <b>Oct 15, 2026</b>
+            ‎Nag inoman si GF mo with her friends, siguro yung alam mo lang ay
+            inom lang or gagawa siya ng project. Pero ang totoo nung may tama na
+            si GF mo and that SO CALLED FRIEND niya raw may nangyayari na palang
+            milagro🙏🏻🥺🙂‍↕️. Nahahalata na ng mga FRIENDS ni GF MO na may milagro
+            na palang nagaganap with them, pero they decided na wag nalang
+            sabihin sayo.
+          </p>
+          <p class="justify">
+            <b>Oct 20, 2026</b>
+            ‎Then this day, pumunta naman si GF mo with her friends again at si
+            SO CALLED FRIEND NIYA?, hinatid mo siya diba? Tapos nag away kayo at
+            umuwi ka, hindi ba nakakapagtaka na ayaw ka niyang andun eh pag mga
+            ganun palagi ka niyang kasama?. Syempre para makapoints nanaman kay
+            FRIEND niya🤣🤣🤣.
+          </p>
+          <p class="justify">
+            <b>Oct 26, 2026</b>
+            Oh kila charles nanaman, ano nanaman kaya nangyari? 🥺🥺. Evidence
+            is already provided, I will not say things na here 🥺🥺. ‎Wag kana
+            papauto sa babaeng yan, u deserve better. Lalo na yung marunong
+            makuntento sa isang lalaki.
+          </p>
+
+          <button
+            class="btn"
+            onclick="
+              document
+                .getElementById('gallery')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            Explore Our Memories ↓
+          </button>
+        </div>
+      </section>
+
+      <!-- PHOTO GALLERY -->
+      <section class="section" id="gallery">
+        <div class="section-heading">
+          <div>
+            <h2>Our <span class="pink">Little Moments</span> 📸</h2>
+            <p>Every picture holds a little piece of happiness.</p>
+          </div>
+
+          <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="photo">Photos</button>
+            <button class="filter-btn" data-filter="video">Videos</button>
+          </div>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- PHOTO 1: Replace images/photo1.jpg with your photo -->
+          <article class="media-card" data-type="photo">
+            <div class="media-frame">
+              <img src="1.jpg" alt="Our special memory" loading="lazy" />
+              <span class="media-label">♡ MEMORY</span>
+            </div>
+            <div class="media-info">
+              <h3>Our Special Day 💗</h3>
+              <p>A little moment I want to remember forever.</p>
+            </div>
+          </article>
+
+          <!-- PHOTO 2 -->
+          <article class="media-card" data-type="photo">
+            <div class="media-frame">
+              <img src="2.jpg" alt="A beautiful memory" loading="lazy" />
+              <span class="media-label">♡ FAVORITE</span>
+            </div>
+            <div class="media-info">
+              <h3>My Favorite Picture 🌸</h3>
+              <p>Some pictures just make you smile.</p>
+            </div>
+          </article>
+
+          <!-- PHOTO 3 -->
+          <article class="media-card" data-type="photo">
+            <div class="media-frame">
+              <img src="3.jpg" alt="A happy moment" loading="lazy" />
+              <span class="media-label">♡ HAPPY DAYS</span>
+            </div>
+            <div class="media-info">
+              <h3>Happy Little Moments ✨</h3>
+              <p>Simple memories, priceless feelings.</p>
+            </div>
+          </article>
+          <article class="media-card" data-type="photo">
+            <div class="media-frame">
+              <img src="4.jpg" alt="A happy moment" loading="lazy" />
+              <span class="media-label">♡ HAPPY DAYS</span>
+            </div>
+            <div class="media-info">
+              <h3>Sakit nito kapag kachat mo siya sa oras nato ✨</h3>
+              <p>Simple memories, priceless feelings.</p>
+            </div>
+          </article>
+          <article class="media-card" data-type="photo">
+            <div class="media-frame">
+              <img src="5.jpg" alt="A happy moment" loading="lazy" />
+              <span class="media-label">♡ HAPPY DAYS</span>
+            </div>
+            <div class="media-info">
+              <h3>Landian Moments ✨</h3>
+              <p>Simple memories, priceless feelings.</p>
+            </div>
+          </article>
+          <article class="media-card" data-type="photo">
+            <div class="media-frame">
+              <img src="6.jpg" alt="A happy moment" loading="lazy" />
+              <span class="media-label">♡ HAPPY DAYS</span>
+            </div>
+            <div class="media-info">
+              <h3>Ang sarap ng patong niya ✨</h3>
+              <p>Simple memories, priceless feelings.</p>
+            </div>
+          </article>
+
+          <!-- ADD MORE CARDS BY COPYING AN EXISTING ARTICLE -->
+        </div>
+      </section>
+
+      <!-- PERSONAL MESSAGE -->
+      <section class="section" id="message">
+        <div class="message-box">
+          <div class="big-heart">💗</div>
+
+          <h2>A Little Message <span class="script">For You</span></h2>
+
+          <p class="justify">
+            Tropa kami na naaawa lang sa'yo sa mga pinaggagawa ng jowa mo.
+            Sobra-sobra na kasi, at sa totoo lang, hindi mo deserve na tratuhin
+            nang ganyan. Alam namin na mahal mo siya at marami ka nang
+            isinakripisyo para sa relasyon ninyo, pero sana maisip mo rin kung
+            hanggang saan ka lang dapat magtiis.
+            <br /><br />
+            Hindi namin alam kung ano ang mga napag-uusapan ninyo o kung ano ang
+            totoong nangyayari sa likod ng relasyon ninyo, pero may mga bagay na
+            hindi na talaga tama. Imagine, habang ikaw seryosong minamahal at
+            pinagkakatiwalaan siya, siya naman gumagawa ng mga bagay na sisira
+            sa tiwala mo. Mas masakit pa kasi hindi lang basta pagkakamali ang
+            nangyari, kundi panloloko sa taong walang ibang ginawa kundi
+            magtiwala sa kanya.
+            <br /><br />
+            Ayaw ka naming pangunahan sa kung anong desisyon ang gagawin mo
+            dahil buhay mo at relasyon mo iyan. Pero bilang mga tropa mo, ayaw
+            lang naming makita kang patuloy na nasasaktan at ginagawang tanga ng
+            taong pinagkakatiwalaan mo. Hindi porket mahal mo ang isang tao,
+            kailangan mong tanggapin lahat ng ginagawa niya, lalo na kung
+            paulit-ulit ka na lang niyang binibigyan ng dahilan para masaktan.
+            <br /><br />
+            Sana huwag mong sisihin ang sarili mo sa nangyari. Hindi mo
+            kasalanan kung pinili niyang magloko. Hindi mo kailangang
+            makipagkumpitensya sa ibang tao para lang makuha ang respeto at
+            loyalty na dapat kusang ibinibigay sa'yo. Deserve mo ng taong hindi
+            ka lolokohin, hindi ka pagtataguan ng katotohanan, at hindi ka
+            gagawing option habang ginagawa mo siyang priority.
+            <br /><br />
+            Hindi namin ito sinasabi para guluhin kayo o palalain ang sitwasyon.
+            Sinasabi namin ito dahil tropa ka namin at ayaw naming makita kang
+            nauubos dahil lang sa taong hindi marunong magpahalaga sa'yo. Sana
+            matauhan ka habang maaga pa. Isipin mo rin ang sarili mo. Minsan
+            kailangan mong piliin ang peace of mind mo kaysa manatili sa isang
+            relasyon na puro sakit na lang ang naibibigay sa'yo.
+            <br /><br />
+          </p>
+          <span class="script" style="font-size: 22px">
+            You deserve all the happiness in the world. ♡
+          </span>
+
+          <br />
+
+          <button class="btn" id="loveBtn">Send Some Love 💕</button>
+        </div>
+      </section>
+
+      <footer>
+        Made with ♡ and a little bit of magic.
+        <br /><br />
+        © 2026 Pink Surprise
+      </footer>
+    </div>
+
+    <script>
+      // ========================================
+      // 1. DEMO LOGIN SETTINGS
+      // CHANGE YOUR USERNAME AND PASSWORD HERE
+      // ========================================
+
+      const correctUsername = "love";
+      const correctPassword = "surprise123";
+
+      const loginPage = document.getElementById("loginPage");
+      const surprisePage = document.getElementById("surprisePage");
+      const loginForm = document.getElementById("loginForm");
+      const loginMessage = document.getElementById("loginMessage");
+
+      // ========================================
+      // 2. LOGIN FUNCTION
+      // ========================================
+
+      loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value;
+
+        if (username === correctUsername && password === correctPassword) {
+          loginMessage.textContent = "Opening your surprise... 💗";
+
+          setTimeout(function () {
+            loginPage.classList.add("hidden");
+            surprisePage.classList.remove("hidden");
+
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+
+            createHearts(25);
+          }, 700);
+        } else {
+          loginMessage.textContent =
+            "Oops! Incorrect username or password. Try again. 💔";
+
+          loginMessage.style.color = "#ff719d";
+
+          const card = document.querySelector(".login-card");
+
+          card.animate(
+            [
+              { transform: "translateX(0)" },
+              { transform: "translateX(-7px)" },
+              { transform: "translateX(7px)" },
+              { transform: "translateX(-5px)" },
+              { transform: "translateX(0)" },
+            ],
+            {
+              duration: 300,
+              easing: "ease-in-out",
+            },
+          );
+        }
+      });
+
+      // ========================================
+      // 3. SHOW / HIDE PASSWORD
+      // ========================================
+
+      document
+        .getElementById("togglePassword")
+        .addEventListener("click", function () {
+          const passwordInput = document.getElementById("password");
+
+          if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            this.textContent = "◎";
+            this.setAttribute("aria-label", "Hide password");
+          } else {
+            passwordInput.type = "password";
+            this.textContent = "◉";
+            this.setAttribute("aria-label", "Show password");
+          }
+        });
+
+      // ========================================
+      // 4. LOGOUT
+      // ========================================
+
+      document
+        .getElementById("logoutBtn")
+        .addEventListener("click", function () {
+          // Pause any videos before hiding the page.
+          document
+            .querySelectorAll("#surprisePage video")
+            .forEach((video) => video.pause());
+
+          surprisePage.classList.add("hidden");
+          loginPage.classList.remove("hidden");
+
+          loginForm.reset();
+          loginMessage.textContent = "";
+
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+
+      // ========================================
+      // 5. GALLERY FILTER
+      // ========================================
+
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const mediaCards = document.querySelectorAll(".media-card");
+
+      filterButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          const selectedFilter = this.dataset.filter;
+
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          this.classList.add("active");
+
+          mediaCards.forEach(function (card) {
+            const cardType = card.dataset.type;
+
+            if (selectedFilter === "all" || selectedFilter === cardType) {
+              card.classList.remove("hidden");
+            } else {
+              card.classList.add("hidden");
+
+              const video = card.querySelector("video");
+
+              if (video) {
+                video.pause();
+              }
+            }
+          });
+        });
+      });
+
+      // ========================================
+      // 6. FLOATING HEART ANIMATION
+      // ========================================
+
+      const heartsContainer = document.getElementById("hearts");
+
+      function createHeart() {
+        const heart = document.createElement("span");
+
+        heart.className = "heart";
+        heart.textContent = ["♥", "♡", "💕", "❤"][
+          Math.floor(Math.random() * 4)
+        ];
+
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.fontSize = 12 + Math.random() * 20 + "px";
+        heart.style.animationDuration = 6 + Math.random() * 6 + "s";
+
+        heartsContainer.appendChild(heart);
+
+        heart.addEventListener("animationend", function () {
+          heart.remove();
+        });
+      }
+
+      // Create a heart every 500 milliseconds.
+      setInterval(createHeart, 500);
+
+      function createHearts(amount) {
+        for (let i = 0; i < amount; i++) {
+          setTimeout(createHeart, i * 100);
+        }
+      }
+
+      // ========================================
+      // 7. SEND SOME LOVE BUTTON
+      // ========================================
+
+      document.getElementById("loveBtn").addEventListener("click", function () {
+        createHearts(35);
+
+        this.textContent = "Sending hugs and kisses! 💗";
+
+        setTimeout(() => {
+          this.textContent = "Send Some Love 💕";
+        }, 2200);
+      });
+    </script>
+  </body>
+</html>
